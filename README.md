@@ -11,7 +11,7 @@ HTML5 • CSS3 • JavaScript
 ![Zrzut ekranu](./assets/screenshots/preview.jpg)
 
 ## Live
-GitHub Pages: [https://twoj-link-do-github-pages](https://marwoz01.github.io/character-counter )
+GitHub Pages: [Link](https://marwoz01.github.io/character-counter )
 
 ## Zawiera
 - Analiza liczby **znaków, słów i zdań** w tekście  
