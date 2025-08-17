@@ -10,23 +10,83 @@
       sizes="32x32"
       href="./assets/images/favicon-32x32.png"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css"
+    />
 
-    <title>Frontend Mentor | Character counter</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Character counter</title>
   </head>
   <body>
-    Analyze your text in real-time. Start typing here… (or paste your text)
-    Exclude Spaces Set Character Limit Approx. reading time:
-    <!-- Insert number -->
-    minutes
+    <header>
+      <div class="container">
+        <img
+          src="./assets/images/logo-dark-theme.svg"
+          alt="Character Counter Logo"
+        />
+        <button class="theme-toggle">
+          <img src="./assets/images/icon-sun.svg" alt="Toggle theme" />
+        </button>
+      </div>
+    </header>
 
-    <!-- Insert number -->
-    Total Characters hello
+    <main>
+      <div class="container">
+        <h1>Analyze your text in real-time.</h1>
+        <textarea
+          name="text"
+          id="text"
+          placeholder="Start typing here..."
+        ></textarea>
+        <div class="checkbox-group">
+          <label class="checkbox" for="exclude-spaces">
+            <input id="exclude-spaces" type="checkbox" />
+            <span>Exclude Spaces</span>
+          </label>
 
-    <!-- Insert number -->
-    Word Count
+          <label class="checkbox" for="set-limit">
+            <input id="set-limit" type="checkbox" />
+            <span>Set Character Limit</span>
+          </label>
 
-    <!-- Insert number -->
-    Sentence Count Letter Density No characters found. Start typing to see
-    letter density.
+          <p>Approx. reading time:</p>
+        </div>
+      </div>
+    </main>
+
+    <section>
+      <div class="container">
+        <div class="card total-characters">
+          <h1>0</h1>
+          <p>Total Characters</p>
+        </div>
+        <div class="card word-count">
+          <h1>0</h1>
+          <p>Word Count</p>
+        </div>
+        <div class="card sentence-count">
+          <h1>0</h1>
+          <p>Sentence Count</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Letter Density</h2>
+        <div class="progress">
+          <span class="label">E</span>
+          <div class="bar">
+            <div class="fill" style="width: 40%"></div>
+          </div>
+          <span class="value">40 (16.06%)</span>
+        </div>
+        <a href="#" class="see-more">
+          See more <i class="fa-solid fa-angle-down"></i>
+        </a>
+      </div>
+    </section>
   </body>
 </html>
