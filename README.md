@@ -1,6 +1,6 @@
 # Character Counter
 
-**Źródło:** projekt z **Frontend Mentor** (wyzwanie „Character Counter”).
+**Źródło:** projekt z **Frontend Mentor**.
 
 **Opis:** Licznik tekstu — zlicza znaki, słowa i zdania, ma tryb motywu oraz kilka praktycznych opcji (limit znaków, wykluczanie spacji, czas czytania).
 
