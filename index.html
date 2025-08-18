@@ -38,7 +38,7 @@
         <textarea
           name="text"
           id="text"
-          placeholder="Start typing here..."
+          placeholder="Start typing here... (or paste your text)"
         ></textarea>
         <div class="checkbox-group">
           <label class="checkbox" for="exclude-spaces">
@@ -51,41 +51,32 @@
             <span>Set Character Limit</span>
           </label>
 
-          <p>Approx. reading time:</p>
         </div>
+         <p>Approx. reading time:</p>
       </div>
     </main>
 
-    <section>
+    <section class="info">
       <div class="container">
         <div class="card total-characters">
-          <h1>0</h1>
-          <p>Total Characters</p>
+          <h1>00</h1>
+          <h4>Total Characters</h4>
         </div>
         <div class="card word-count">
-          <h1>0</h1>
-          <p>Word Count</p>
+          <h1>00</h1>
+          <h4>Word Count</h4>
         </div>
         <div class="card sentence-count">
-          <h1>0</h1>
-          <p>Sentence Count</p>
+          <h1>00</h1>
+          <h4>Sentence Count</h4>
         </div>
       </div>
     </section>
 
-    <section>
+    <section class="density">
       <div class="container">
         <h2>Letter Density</h2>
-        <div class="progress">
-          <span class="label">E</span>
-          <div class="bar">
-            <div class="fill" style="width: 40%"></div>
-          </div>
-          <span class="value">40 (16.06%)</span>
-        </div>
-        <a href="#" class="see-more">
-          See more <i class="fa-solid fa-angle-down"></i>
-        </a>
+        <p>No characters found. Start typing to see letter density.</p>
       </div>
     </section>
   </body>

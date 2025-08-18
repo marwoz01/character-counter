@@ -136,8 +136,13 @@ section .container h1 {
   font-size: 2.5rem;
 }
 
-section .container p {
+section .container h4 {
   font-size: 1.5rem;
+  font-weight: 400;
+}
+
+section .container p {
+  font-size: 1rem;
 }
 
 .total-characters {
@@ -155,34 +160,23 @@ section .container p {
   background-image: url("./assets/images/pattern-sentence-count.svg");
 }
 
-.progress {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: "DM Sans", sans-serif;
-  font-size: 0.9rem;
-  color: #e4e4ef;
-  margin: 1.5rem 0;
+.density p {
+  padding: 2rem 0;
 }
 
-.progress .bar {
-  flex: 1;
-  background: #2a2b37;
-  border-radius: 999px;
-  overflow: hidden;
-  height: 14px;
-  margin: 0 1rem;
-}
+@media (min-width: 769px) {
+  .checkbox-group {
+    display: flex;
+    flex-direction: row;
+  }
 
-.progress .fill {
-  background: #c28bfa;
-  height: 100%;
-  border-radius: 999px;
-}
+  .info .container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
 
-.see-more {
-  text-decoration: none;
-  color: white;
-  font-size: 1.2rem;
-  padding-bottom: 2rem;
+  .info .card {
+    flex: 1;
+  }
 }
