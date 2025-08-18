@@ -37,7 +37,7 @@
         <h1>Analyze your text in real-time.</h1>
         <textarea
           name="text"
-          id="text"
+          id="textarea"
           placeholder="Start typing here... (or paste your text)"
         ></textarea>
         <div class="checkbox-group">
@@ -59,7 +59,7 @@
     <section class="info">
       <div class="container">
         <div class="card total-characters">
-          <h1>00</h1>
+          <h1 id="total-chars">00</h1>
           <h4>Total Characters</h4>
         </div>
         <div class="card word-count">
@@ -79,5 +79,7 @@
         <p>No characters found. Start typing to see letter density.</p>
       </div>
     </section>
+
+    <script src="script.js"></script>
   </body>
 </html>
