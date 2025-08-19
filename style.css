@@ -164,6 +164,19 @@ section .container p {
   padding: 2rem 0;
 }
 
+.limit-number {
+  width: 60px;
+  padding: 0.25rem 0;
+  background: transparent;
+  border: 1px solid #404254;
+  border-radius: 4px;
+  resize: none;
+  color: #e4e4ef;
+  font-family: "DM Sans", sans-serif;
+  text-align: center;
+  display: none;
+}
+
 @media (min-width: 769px) {
   .checkbox-group {
     display: flex;
