@@ -40,18 +40,21 @@
           id="textarea"
           placeholder="Start typing here... (or paste your text)"
         ></textarea>
+        <p id="limit-message" class="hidden">
+          <i class="fa-solid fa-circle-info"></i>
+          <span id="limit-text"></span>
+        </p>
         <div class="checkbox-group">
           <label class="checkbox" for="exclude-spaces">
             <input id="exclude-spaces" type="checkbox" />
             <span>Exclude Spaces</span>
           </label>
 
-          <label class="checkbox" for="set-limit">
+          <label class="checkbox" for="set-limit" id="char-limit-label">
             <input id="set-limit" type="checkbox" />
             <span>Set Character Limit</span>
             <input id="limit-number" type="number" class="limit-number">
           </label>
-
         </div>
          <p>Approx. reading time:</p>
       </div>

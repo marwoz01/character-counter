@@ -79,11 +79,34 @@ main textarea {
   line-height: 1.5;
   font-size: 1.4rem;
   padding: 1rem;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+
+main textarea:focus {
+  border-color: #c27cf8;
+  box-shadow: 0 0 0 2px #c27cf8, 0 0 12px #c27cf8;
+}
+
+main textarea.warning,
+main textarea.warning:focus {
+  border-color: #fe8159;
+  box-shadow: 0 0 0 2px #fe8159, 0 0 12px #fe8159;
 }
 
 label {
   display: block;
   margin-bottom: 0.5rem;
+}
+
+#limit-message {
+  color: #fe8159;
+  font-size: 1.15rem;
+  margin: 1rem 0;
+}
+
+.hidden {
+  display: none;
 }
 
 .checkbox-group {
