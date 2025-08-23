@@ -5,8 +5,10 @@ const charLimitCheckbox = document.getElementById('set-limit')
 const charLimitInput = document.getElementById('limit-number')
 const limitMsg = document.getElementById('limit-message');
 const limitText = document.getElementById('limit-text');
+let totalSentencesEl = document.getElementById('sentence-count')
 
 text.addEventListener('input', charCounting);
+text.addEventListener('input', sentenceCounting)
 excludeSpacesCb.addEventListener('change', charCounting);
 charLimitCheckbox.addEventListener('change', toggleCharLimit)
 charLimitInput.addEventListener('input', limitWarning)
@@ -16,6 +18,13 @@ function charCounting() {
   const cleaned = excludeSpacesCb.checked ? raw.replace(/\s/g, '') : raw;
   totalCharsEl.textContent = cleaned.length;
   limitWarning()
+}
+
+function sentenceCounting() {
+  const raw = text.value.trim()
+  const sentences = raw.split(/[.!?]/)
+  const cleanSentences = sentences.filter(s => s.trim())
+  totalSentencesEl.textContent = cleanSentences.length
 }
 
 function toggleCharLimit() {
