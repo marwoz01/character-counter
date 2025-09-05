@@ -13,7 +13,10 @@ const limitText = document.getElementById('limit-text');
 text.addEventListener('input', updateAll);
 excludeSpacesCb.addEventListener('change', updateAll);           
 charLimitCheckbox.addEventListener('change', toggleCharLimit);
-charLimitInput.addEventListener('input', updateAll);             
+charLimitInput.addEventListener('input', updateAll);      
+
+const letterStatsEl = document.getElementById('letter-stats')
+const letterEmpty = document.getElementById('letter-empty')
 
 function updateAll() {
   const raw = text.value;
@@ -34,6 +37,9 @@ function updateAll() {
 
   // limit słów
   limitWarning();
+
+  const stats = letterStatsCounter();
+  letterStatsRender(stats);
 }
 
 function toggleCharLimit() {
@@ -66,7 +72,48 @@ function limitWarning() {
   }
 }
 
-function letterCounter() {
-  const letters = text.value.toLowerCase()
-  const matches = letters.match(/[a-z]/g) || []
+function letterStatsCounter() {
+  const letters = text.value.toLocaleLowerCase('pl');
+  const matches = letters.match(/\p{L}/gu) || [];
+
+  const counts = {};
+  for (const letter of matches) {
+    if (counts[letter] === undefined) {
+      counts[letter] = 1;
+    } else {
+      counts[letter] += 1;
+    }
+  }
+
+  const entries = Object.entries(counts);            
+  const total = entries.reduce((sum, [, c]) => sum + c, 0);
+
+  const stats = entries.map(([letter, count]) => ({
+    letter,
+    count,
+    pct: total ? (count / total) * 100 : 0
+  }));
+
+  stats.sort((a, b) => b.count - a.count)
+  return stats
+}
+
+function letterStatsRender(stats) {
+  if (stats.length === 0) {
+    letterEmpty.classList.remove('hidden')
+    letterStatsEl.classList.add('hidden')
+    letterStatsEl.innerHTML = ""
+    return 
+  } else {
+    letterEmpty.classList.add('hidden');
+    letterStatsEl.classList.remove('hidden'); 
+  }
+
+  letterStatsEl.innerHTML = ""
+
+  for (const stat of stats) {
+    const li = document.createElement('li');
+    li.textContent = `${stat.letter}: ${stat.count} (${stat.pct.toFixed(2)}%)`;
+    letterStatsEl.appendChild(li);
+  }
 }
