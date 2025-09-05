@@ -113,7 +113,28 @@ function letterStatsRender(stats) {
 
   for (const stat of stats) {
     const li = document.createElement('li');
-    li.textContent = `${stat.letter}: ${stat.count} (${stat.pct.toFixed(2)}%)`;
-    letterStatsEl.appendChild(li);
+    const letterSpan = document.createElement('span');
+    letterSpan.className = 'letter';
+    letterSpan.textContent = stat.letter;
+
+    const bar = document.createElement('div');
+    bar.className = 'bar';
+
+    const fill = document.createElement('div');
+    fill.className = 'fill';
+    fill.style.width = stat.pct + '%';
+
+    bar.appendChild(fill);
+
+
+    const valueSpan = document.createElement('span');
+    valueSpan.className = 'value';
+    valueSpan.textContent = `${stat.count} (${stat.pct.toFixed(2)}%)`;
+
+    li.appendChild(letterSpan);
+    li.appendChild(bar);
+    li.appendChild(valueSpan);
+
+    letterStatsEl.appendChild(li)
   }
 }

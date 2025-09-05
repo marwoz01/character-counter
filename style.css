@@ -187,6 +187,27 @@ section .container p {
   padding: 2rem 0;
 }
 
+#letter-stats li {
+  display: grid;
+  grid-template-columns: 30px 1fr 100px;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.bar {
+  background: #21222c;  
+  border-radius: 4px;
+  height: 16px;
+  overflow: hidden;
+}
+
+.fill {
+  background: #d3a0fa; 
+  height: 100%;
+}
+
+
 .limit-number {
   width: 60px;
   padding: 0.25rem 0;
