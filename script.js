@@ -1,38 +1,39 @@
 const text = document.getElementById('textarea');
-const totalCharsEl = document.getElementById('total-chars');
+
+const totalCharsEl = document.getElementById('char-count');
+const totalSentencesEl = document.getElementById('sentence-count');
+const totalWordsEl = document.getElementById('word-count');
+
 const excludeSpacesCb = document.getElementById('exclude-spaces');
 const charLimitCheckbox = document.getElementById('set-limit');
 const charLimitInput = document.getElementById('limit-number');
 const limitMsg = document.getElementById('limit-message');
 const limitText = document.getElementById('limit-text');
-const totalSentencesEl = document.getElementById('sentence-count');
-const totalWordsEl = document.getElementById('word-count')
 
-text.addEventListener('input', charCounting);
-text.addEventListener('input', sentenceCounting);
-text.addEventListener('input', wordCounting)
-excludeSpacesCb.addEventListener('change', charCounting);
+text.addEventListener('input', updateAll);
+excludeSpacesCb.addEventListener('change', updateAll);           
 charLimitCheckbox.addEventListener('change', toggleCharLimit);
-charLimitInput.addEventListener('input', limitWarning);
+charLimitInput.addEventListener('input', updateAll);             
 
-function charCounting() {
+function updateAll() {
   const raw = text.value;
-  const cleaned = excludeSpacesCb.checked ? raw.replace(/\s/g, '') : raw;
-  totalCharsEl.textContent = cleaned.length;
+  const trimmed = raw.trim();
+
+  // znaki
+  const chars = excludeSpacesCb.checked ? raw.replace(/\s/g, '') : raw; 
+  totalCharsEl.textContent = chars.length;
+
+  // słowa
+  const wordsArr = trimmed ? trimmed.split(/\s+/) : [];
+  const wordsCount = wordsArr.length;
+  totalWordsEl.textContent = wordsCount;
+
+  // zdania
+  const sentencesArr = trimmed ? trimmed.split(/[.!?]+/).filter(s => s.trim()) : [];
+  totalSentencesEl.textContent = sentencesArr.length;
+
+  // limit słów
   limitWarning();
-}
-
-function wordCounting() {
-  const raw = text.value
-  const words = raw.trim().split(/\s+/);
-  totalWordsEl.textContent = words.length;
-}
-
-function sentenceCounting() {
-  const raw = text.value.trim();
-  const sentences = raw.split(/[.!?]+/);
-  const cleanSentences = sentences.filter(s => s.trim());
-  totalSentencesEl.textContent = cleanSentences.length; 
 }
 
 function toggleCharLimit() {
@@ -46,7 +47,7 @@ function limitWarning() {
   const limit = Number(charLimitInput.value);
   if (!charLimitCheckbox.checked || !limit) {
     text.classList.remove('warning');
-    limitText.textContent = '';        
+    limitText.textContent = '';
     limitMsg.classList.add('hidden');
     return;
   }
@@ -63,4 +64,9 @@ function limitWarning() {
     limitText.textContent = '';
     limitMsg.classList.add('hidden');
   }
+}
+
+function letterCounter() {
+  const letters = text.value.toLowerCase()
+  const matches = letters.match(/[a-z]/g) || []
 }

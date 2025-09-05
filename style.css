@@ -168,7 +168,7 @@ section .container p {
   font-size: 1rem;
 }
 
-.total-characters {
+.char-count {
   background-color: #d28aff;
   background-image: url("./assets/images/pattern-character-count.svg");
 }
