@@ -207,6 +207,13 @@ section .container p {
   height: 100%;
 }
 
+#letter-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  margin: 1.5rem 0;
+}
 
 .limit-number {
   width: 60px;

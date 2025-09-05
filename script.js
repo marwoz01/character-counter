@@ -18,6 +18,16 @@ charLimitInput.addEventListener('input', updateAll);
 const letterStatsEl = document.getElementById('letter-stats')
 const letterEmpty = document.getElementById('letter-empty')
 
+const letterToggleBtn = document.getElementById('letter-toggle')
+const LETTER_LIMIT = 5
+let showAllLetters = false
+let lastLetterStats = []
+letterToggleBtn.addEventListener('click', () => {
+  showAllLetters = !showAllLetters;
+  letterStatsRender(lastLetterStats);
+});
+
+
 function updateAll() {
   const raw = text.value;
   const trimmed = raw.trim();
@@ -39,7 +49,9 @@ function updateAll() {
   limitWarning();
 
   const stats = letterStatsCounter();
-  letterStatsRender(stats);
+  lastLetterStats = stats;
+  showAllLetters = false;
+  letterStatsRender(lastLetterStats);
 }
 
 function toggleCharLimit() {
@@ -100,19 +112,32 @@ function letterStatsCounter() {
 
 function letterStatsRender(stats) {
   if (stats.length === 0) {
-    letterEmpty.classList.remove('hidden')
-    letterStatsEl.classList.add('hidden')
-    letterStatsEl.innerHTML = ""
-    return 
+    letterEmpty.classList.remove('hidden');
+    letterStatsEl.classList.add('hidden');
+    letterStatsEl.innerHTML = '';
+    letterToggleBtn.classList.add('hidden');
+    return;
   } else {
     letterEmpty.classList.add('hidden');
-    letterStatsEl.classList.remove('hidden'); 
+    letterStatsEl.classList.remove('hidden');
   }
 
-  letterStatsEl.innerHTML = ""
+  const visible = showAllLetters ? stats : stats.slice(0, LETTER_LIMIT);
 
-  for (const stat of stats) {
+  if (stats.length > LETTER_LIMIT) {
+    letterToggleBtn.classList.remove('hidden');
+    letterToggleBtn.innerHTML = showAllLetters
+      ? 'See less <i class="fa-solid fa-angle-up"></i>'
+      : 'See more <i class="fa-solid fa-angle-down"></i>';
+    letterToggleBtn.setAttribute('aria-expanded', String(showAllLetters));
+  } else {
+    letterToggleBtn.classList.add('hidden');
+  }
+
+  letterStatsEl.innerHTML = '';
+  for (const stat of visible) {
     const li = document.createElement('li');
+
     const letterSpan = document.createElement('span');
     letterSpan.className = 'letter';
     letterSpan.textContent = stat.letter;
@@ -123,9 +148,7 @@ function letterStatsRender(stats) {
     const fill = document.createElement('div');
     fill.className = 'fill';
     fill.style.width = stat.pct + '%';
-
     bar.appendChild(fill);
-
 
     const valueSpan = document.createElement('span');
     valueSpan.className = 'value';
@@ -134,7 +157,6 @@ function letterStatsRender(stats) {
     li.appendChild(letterSpan);
     li.appendChild(bar);
     li.appendChild(valueSpan);
-
-    letterStatsEl.appendChild(li)
+    letterStatsEl.appendChild(li);
   }
 }
